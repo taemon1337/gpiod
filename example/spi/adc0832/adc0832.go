@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 Kent Gibson <warthog618@gmail.com>
+// SPDX-FileCopyrightText: 2019 Kent Gibson <taemon1337@gmail.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -10,9 +10,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/warthog618/gpiod"
-	"github.com/warthog618/gpiod/device/rpi"
-	"github.com/warthog618/gpiod/spi/adc0832"
+	"github.com/taemon1337/gpiod"
+	"github.com/taemon1337/gpiod/device/rpi"
+	"github.com/taemon1337/gpiod/spi/adc0832"
 )
 
 // This example reads both channels from an ADC0832 connected to the RPI by four

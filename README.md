@@ -1,15 +1,15 @@
 <!--
-SPDX-FileCopyrightText: 2019 Kent Gibson <warthog618@gmail.com>
+SPDX-FileCopyrightText: 2019 Kent Gibson <taemon1337@gmail.com>
 
 SPDX-License-Identifier: MIT
 -->
 
 # gpiod
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/warthog618/gpiod/go.yml?logo=github&branch=master)](https://github.com/warthog618/gpiod/actions/workflows/go.yml)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/warthog618/gpiod)](https://pkg.go.dev/github.com/warthog618/gpiod)
-[![Go Report Card](https://goreportcard.com/badge/github.com/warthog618/gpiod)](https://goreportcard.com/report/github.com/warthog618/gpiod)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/warthog618/gpiod/blob/master/LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/taemon1337/gpiod/go.yml?logo=github&branch=master)](https://github.com/taemon1337/gpiod/actions/workflows/go.yml)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/taemon1337/gpiod)](https://pkg.go.dev/github.com/taemon1337/gpiod)
+[![Go Report Card](https://goreportcard.com/badge/github.com/taemon1337/gpiod)](https://goreportcard.com/report/github.com/taemon1337/gpiod)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/taemon1337/gpiod/blob/master/LICENSE)
 
 A native Go library for Linux GPIO.
 
@@ -31,7 +31,7 @@ So, in summary, the planned changes are:
 
 v0.8.x
 
-- Deprecate github.com/warthog618/gpiod in favour of github.com/warthog618/go-gpiocdev
+- Deprecate github.com/taemon1337/gpiod in favour of github.com/taemon1337/go-gpiocdev
 
 v0.9.0
 
@@ -68,7 +68,7 @@ A simple piece of wire example that reads the value of an input line (pin 2) and
 writes its value to an output line (pin 3):
 
 ```go
-import "github.com/warthog618/gpiod"
+import "github.com/taemon1337/gpiod"
 
 ...
 
@@ -84,7 +84,7 @@ Error handling and releasing of resources omitted for brevity.
 ## Usage
 
 ```go
-import "github.com/warthog618/gpiod"
+import "github.com/taemon1337/gpiod"
 ```
 
 Error handling is omitted from the following examples for brevity.
@@ -92,15 +92,15 @@ Error handling is omitted from the following examples for brevity.
 ### Line Requests
 
 To read or alter the value of a
-[line](https://pkg.go.dev/github.com/warthog618/gpiod#Line) it must first be
-requested using [*gpiod.RequestLine*](https://pkg.go.dev/github.com/warthog618/gpiod#RequestLine):
+[line](https://pkg.go.dev/github.com/taemon1337/gpiod#Line) it must first be
+requested using [*gpiod.RequestLine*](https://pkg.go.dev/github.com/taemon1337/gpiod#RequestLine):
 
 ```go
 l, _ := gpiod.RequestLine("gpiochip0", 4)   // in its existing state
 ```
 
 or from the [*Chip*](#chip-initialization) object using
-[*Chip.RequestLine*](https://pkg.go.dev/github.com/warthog618/gpiod#Chip.RequestLine):
+[*Chip.RequestLine*](https://pkg.go.dev/github.com/taemon1337/gpiod#Chip.RequestLine):
 
 ```go
 l, _ := c.RequestLine(4)                    // from a Chip object
@@ -123,15 +123,15 @@ l, _ := gpiod.RequestLine("gpiochip0", 4, gpiod.AsOutput(1))  // as an output li
 ```
 
 Multiple lines from the same chip may be requested as a collection of
-[lines](https://pkg.go.dev/github.com/warthog618/gpiod#Lines) using
-[*gpiod.RequestLines*](https://pkg.go.dev/github.com/warthog618/gpiod#RequestLines)
+[lines](https://pkg.go.dev/github.com/taemon1337/gpiod#Lines) using
+[*gpiod.RequestLines*](https://pkg.go.dev/github.com/taemon1337/gpiod#RequestLines)
 
 ```go
 ll, _ := gpiod.RequestLines("gpiochip0", []int{0, 1, 2, 3}, gpiod.AsOutput(0, 0, 1, 1))
 ```
 
  or from a Chip object using
-[*Chip.RequestLines*](https://pkg.go.dev/github.com/warthog618/gpiod#Chip.RequestLines):
+[*Chip.RequestLines*](https://pkg.go.dev/github.com/taemon1337/gpiod#Chip.RequestLines):
 
 ```go
 ll, _ := c.RequestLines([]int{0, 1, 2, 3}, gpiod.AsOutput(0, 0, 1, 1))
@@ -152,7 +152,7 @@ values can be accessed.
 #### Read Input
 
 The current line value can be read with the
-[*Value*](https://pkg.go.dev/github.com/warthog618/gpiod#Line.Value)
+[*Value*](https://pkg.go.dev/github.com/taemon1337/gpiod#Line.Value)
 method:
 
 ```go
@@ -160,7 +160,7 @@ r, _ := l.Value()  // Read state from line (active / inactive)
 ```
 
 For collections of lines, the level of all lines is read simultaneously using
-the [*Values*](https://pkg.go.dev/github.com/warthog618/gpiod#Lines.SetValues)
+the [*Values*](https://pkg.go.dev/github.com/taemon1337/gpiod#Lines.SetValues)
 method:
 
 ```go
@@ -171,7 +171,7 @@ ll.Values(rr)           // Read the state of a collection of lines
 #### Write Output
 
 The current line value can be set with the
-[*SetValue*](https://pkg.go.dev/github.com/warthog618/gpiod#Line.SetValue)
+[*SetValue*](https://pkg.go.dev/github.com/taemon1337/gpiod#Line.SetValue)
 method:
 
 ```go
@@ -182,7 +182,7 @@ l.SetValue(0)     // Set line inactive
 Also refer to the [blinker](example/blinker/blinker.go) example.
 
 For collections of lines, all lines are set simultaneously using the
-[*SetValues*](https://pkg.go.dev/github.com/warthog618/gpiod#Lines.SetValues)
+[*SetValues*](https://pkg.go.dev/github.com/taemon1337/gpiod#Lines.SetValues)
 method:
 
 ```go
@@ -198,7 +198,7 @@ The watch can be on rising or falling edges, or both.
 
 The events are passed to a handler function provided using the
 *WithEventHandler(eh)* option.  The handler function is passed a
-[*LineEvent*](https://pkg.go.dev/github.com/warthog618/gpiod#LineEvent), which
+[*LineEvent*](https://pkg.go.dev/github.com/taemon1337/gpiod#LineEvent), which
 contains details of the edge event including the offset of the triggering line,
 the time the edge was detected and the type of edge detected:
 
@@ -299,7 +299,7 @@ The Chip object is used to discover details about avaialble lines and can be use
 to request lines from a GPIO chip.
 
 A Chip object is constructed using the
-[*NewChip*](https://pkg.go.dev/github.com/warthog618/gpiod#NewChip) function.
+[*NewChip*](https://pkg.go.dev/github.com/taemon1337/gpiod#NewChip) function.
 
 ```go
 c, _ := gpiod.NewChip("gpiochip0")
@@ -316,7 +316,7 @@ cc := gpiod.Chips()
 
 Default attributes for Lines requested from the Chip can be set via
 [configuration options](#configuration-options) to
-[*NewChip*](https://pkg.go.dev/github.com/warthog618/gpiod#NewChip).
+[*NewChip*](https://pkg.go.dev/github.com/taemon1337/gpiod#NewChip).
 
 ```go
 c, _ := gpiod.NewChip("gpiochip0", gpiod.WithConsumer("myapp"))
@@ -335,9 +335,9 @@ requested from the chip.
 
 ### Line Info
 
-[Info](https://pkg.go.dev/github.com/warthog618/gpiod#LineInfo) about a line can
+[Info](https://pkg.go.dev/github.com/taemon1337/gpiod#LineInfo) about a line can
 be read at any time from the chip using the
-[*LineInfo*](https://pkg.go.dev/github.com/warthog618/gpiod#Chip.LineInfo)
+[*LineInfo*](https://pkg.go.dev/github.com/taemon1337/gpiod#Chip.LineInfo)
 method:
 
 ```go
@@ -535,14 +535,14 @@ with *NewChip* or *Line.Reconfigure*.
 On Linux:
 
 ```shell
-go get github.com/warthog618/gpiod
+go get github.com/taemon1337/gpiod
 ```
 
 For other platforms, where you intend to cross-compile for Linux, don't attempt
 to compile the package when it is installed:
 
 ```shell
-go get -d github.com/warthog618/gpiod
+go get -d github.com/taemon1337/gpiod
 ```
 
 ## Tools
@@ -615,7 +615,7 @@ with go1.20.6:
 $ ./gpiod.test -test.bench=.*
 goos: linux
 goarch: arm
-pkg: github.com/warthog618/gpiod
+pkg: github.com/taemon1337/gpiod
 BenchmarkChipNewClose     	     248	   4381075 ns/op
 BenchmarkLineInfo         	   24651	     47278 ns/op
 BenchmarkLineReconfigure  	   20312	     55273 ns/op
@@ -638,7 +638,7 @@ And on a Raspberry Pi 4 running Linux 6.4 (32bit kernel) and built with go1.20.6
 $ ./gpiod.test -test.bench=.*
 goos: linux
 goarch: arm
-pkg: github.com/warthog618/gpiod
+pkg: github.com/taemon1337/gpiod
 BenchmarkChipNewClose-4       	    9727	    118291 ns/op
 BenchmarkLineInfo-4           	  185316	      6104 ns/op
 BenchmarkLineReconfigure-4    	  364795	      3205 ns/op
@@ -675,7 +675,7 @@ Switch tests from **gpio-mockup** to **gpio-sim**.
 
 Drop test dependency on *pilebones/go-udev*.
 
-Drop example dependency on *warthog618/config*.
+Drop example dependency on *taemon1337/config*.
 
 ### v0.8.1
 

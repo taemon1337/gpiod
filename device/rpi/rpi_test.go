@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 Kent Gibson <warthog618@gmail.com>
+// SPDX-FileCopyrightText: 2019 Kent Gibson <taemon1337@gmail.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/warthog618/gpiod/device/rpi"
+	"github.com/taemon1337/gpiod/device/rpi"
 )
 
 var patterns = []struct {

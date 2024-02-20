@@ -8,13 +8,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/warthog618/gpiod"
-	"github.com/warthog618/gpiod/device/orangepi"
+	"github.com/taemon1337/gpiod"
+	"github.com/taemon1337/gpiod/device/orangepi"
 )
 
 var (
 	OFF int = 0
 	ON int = 1
+  BLINK_COUNT int = 5
 )
 
 func printEvent(evt gpiod.LineEvent, led *gpiod.Line) {
@@ -72,7 +73,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	period := 10 * time.Millisecond
+	// period := 10 * time.Millisecond
 	hit, err := gpiod.RequestLine("gpiochip0", hitpin, gpiod.WithPullUp, gpiod.WithRisingEdge, gpiod.WithEventHandler(eh))
 	if err != nil {
 		fmt.Printf("RequestLine returned error: %s\n", err)
@@ -83,7 +84,7 @@ func main() {
 	}
 
 	// start by blinking n times
-	for _ = range 5 {
+  for i := 1; i <= BLINK_COUNT; i++ {
 		fmt.Println("turning ON")
 		led.SetValue(ON)
 		time.Sleep(100 * time.Millisecond)

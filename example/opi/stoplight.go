@@ -7,8 +7,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/warthog618/gpiod"
-	"github.com/warthog618/gpiod/device/orangepi"
+	"github.com/taemon1337/gpiod"
+	"github.com/taemon1337/gpiod/device/orangepi"
 )
 
 func printEvent(evt gpiod.LineEvent) {

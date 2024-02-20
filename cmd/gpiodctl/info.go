@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 Kent Gibson <warthog618@gmail.com>
+// SPDX-FileCopyrightText: 2019 Kent Gibson <taemon1337@gmail.com>
 //
 // SPDX-License-Identifier: MIT
 
@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/warthog618/gpiod"
+	"github.com/taemon1337/gpiod"
 )
 
 func init() {
